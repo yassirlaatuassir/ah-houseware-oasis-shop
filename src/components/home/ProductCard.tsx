@@ -20,18 +20,18 @@ interface ProductCardProps {
 const ProductCard = ({ product, handleWhatsAppClick }: ProductCardProps) => {
   return (
     <Card key={product.id} className="group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-      <div className="relative overflow-hidden rounded-t-lg h-[240px]">
+      <div className="relative overflow-hidden rounded-t-lg h-[200px]">
         <img
           src={product.image}
           alt={product.name}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-contain p-2"
         />
         <div className="absolute top-4 right-4 bg-red-500 text-white px-2 py-1 rounded text-sm font-bold">
           PROMO
         </div>
       </div>
-      <CardContent className="p-6">
-        <h3 className="text-xl font-semibold text-gray-800 mb-2">{product.name}</h3>
+      <CardContent className="p-4">
+        <h3 className="text-lg font-semibold text-gray-800 mb-2 line-clamp-2">{product.name}</h3>
         <div className="flex items-center space-x-2 mb-3">
           <div className="flex items-center">
             {[...Array(5)].map((_, i) => (
