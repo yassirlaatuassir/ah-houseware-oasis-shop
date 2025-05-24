@@ -1,4 +1,7 @@
 
+import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { PenLine } from 'lucide-react';
 import ArticleCard from './ArticleCard';
 import { Article } from '@/data/articles';
 
@@ -15,6 +18,13 @@ const ArticlesSection = ({ articles }: ArticlesSectionProps) => {
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Temukan tips, trik, dan panduan berguna seputar peralatan dapur dan rumah tangga
           </p>
+          <div className="mt-6">
+            <Link to="/artikel/new">
+              <Button className="bg-green-600 hover:bg-green-700 inline-flex items-center gap-2">
+                <PenLine className="h-4 w-4" /> Tulis Artikel Baru
+              </Button>
+            </Link>
+          </div>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
