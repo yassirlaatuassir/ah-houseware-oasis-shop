@@ -12,8 +12,6 @@ interface FormData {
   email: string;
   city: string;
   province: string;
-  experience: string;
-  motivation: string;
 }
 
 const ResellerForm = () => {
@@ -24,8 +22,6 @@ const ResellerForm = () => {
     email: '',
     city: '',
     province: '',
-    experience: '',
-    motivation: ''
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -37,9 +33,7 @@ const ResellerForm = () => {
       `*WhatsApp:* ${formData.whatsapp}\n` +
       `*Email:* ${formData.email}\n` +
       `*Kota/Kabupaten:* ${formData.city}\n` +
-      `*Provinsi:* ${formData.province}\n\n` +
-      `*Pengalaman Bisnis:*\n${formData.experience || '-'}\n\n` +
-      `*Motivasi Bergabung:*\n${formData.motivation}`;
+      `*Provinsi:* ${formData.province}`;
 
     // Create WhatsApp URL
     const waURL = `https://wa.me/6281292851919?text=${encodeURIComponent(message)}`;
@@ -54,8 +48,6 @@ const ResellerForm = () => {
       email: '',
       city: '',
       province: '',
-      experience: '',
-      motivation: ''
     });
 
     toast({
@@ -151,33 +143,6 @@ const ResellerForm = () => {
                       onChange={(e) => setFormData({ ...formData, province: e.target.value })}
                     />
                   </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Pengalaman Bisnis
-                  </label>
-                  <Textarea
-                    className="w-full"
-                    rows={4}
-                    placeholder="Ceritakan pengalaman bisnis atau penjualan Anda (opsional)"
-                    value={formData.experience}
-                    onChange={(e) => setFormData({ ...formData, experience: e.target.value })}
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Motivasi Bergabung *
-                  </label>
-                  <Textarea
-                    required
-                    className="w-full"
-                    rows={4}
-                    placeholder="Mengapa Anda ingin menjadi reseller AH Houseware?"
-                    value={formData.motivation}
-                    onChange={(e) => setFormData({ ...formData, motivation: e.target.value })}
-                  />
                 </div>
 
                 <Button
