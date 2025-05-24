@@ -87,7 +87,7 @@ const Index = () => {
         
         <AboutSection />
         
-        <ProductCatalog handleWhatsAppClick={handleWhatsAppClick} />
+        <ProductCatalog />
         
         <ArticlesSection articles={articles} />
         
