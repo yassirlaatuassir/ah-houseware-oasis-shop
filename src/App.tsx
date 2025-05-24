@@ -12,7 +12,7 @@ import NotFound from "./pages/NotFound";
 import ArticleDetail from "./pages/ArticleDetail";
 import Login from "./pages/admin/Login";
 import Articles from "./pages/admin/Articles";
-import ArticleForm from "./pages/admin/ArticleForm";
+import ArticleEditor from "./pages/admin/ArticleEditor";
 
 const queryClient = new QueryClient();
 
@@ -29,8 +29,8 @@ const App = () => (
               <Route path="/artikel/:articleId" element={<ArticleDetail />} />
               <Route path="/admin/login" element={<Login />} />
               <Route path="/admin/articles" element={<Articles />} />
-              <Route path="/admin/articles/new" element={<ArticleForm />} />
-              <Route path="/admin/articles/edit/:id" element={<ArticleForm />} />
+              <Route path="/admin/articles/new" element={<ArticleEditor />} />
+              <Route path="/admin/articles/edit/:id" element={<ArticleEditor />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
