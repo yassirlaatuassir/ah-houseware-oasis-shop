@@ -117,10 +117,7 @@ const Index = () => {
     window.open(`https://wa.me/6281234567890?text=${encodeURIComponent(message)}`, '_blank');
   };
 
-  const handleResellerSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast.success('Pendaftaran reseller berhasil dikirim! Tim kami akan menghubungi Anda segera.');
-  };
+  
 
   const scrollToSection = (sectionId: string) => {
     setActiveSection(sectionId);
@@ -161,7 +158,7 @@ const Index = () => {
         
         <TestimonialsSection testimonials={testimonials} />
         
-        <ResellerForm handleResellerSubmit={handleResellerSubmit} />
+        <ResellerForm />
         
         <Footer />
         

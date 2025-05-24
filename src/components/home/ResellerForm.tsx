@@ -1,14 +1,68 @@
 
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { useToast } from '@/components/ui/use-toast';
 
-interface ResellerFormProps {
-  handleResellerSubmit: (e: React.FormEvent) => void;
+interface FormData {
+  name: string;
+  whatsapp: string;
+  email: string;
+  city: string;
+  province: string;
+  experience: string;
+  motivation: string;
 }
 
-const ResellerForm = ({ handleResellerSubmit }: ResellerFormProps) => {
+const ResellerForm = () => {
+  const { toast } = useToast();
+  const [formData, setFormData] = useState<FormData>({
+    name: '',
+    whatsapp: '',
+    email: '',
+    city: '',
+    province: '',
+    experience: '',
+    motivation: ''
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Format the message
+    const message = `*PENDAFTARAN RESELLER BARU*\n\n` +
+      `*Nama Lengkap:* ${formData.name}\n` +
+      `*WhatsApp:* ${formData.whatsapp}\n` +
+      `*Email:* ${formData.email}\n` +
+      `*Kota/Kabupaten:* ${formData.city}\n` +
+      `*Provinsi:* ${formData.province}\n\n` +
+      `*Pengalaman Bisnis:*\n${formData.experience || '-'}\n\n` +
+      `*Motivasi Bergabung:*\n${formData.motivation}`;
+
+    // Create WhatsApp URL
+    const waURL = `https://wa.me/6281292851919?text=${encodeURIComponent(message)}`;
+
+    // Open WhatsApp in new tab
+    window.open(waURL, '_blank');
+
+    // Reset form
+    setFormData({
+      name: '',
+      whatsapp: '',
+      email: '',
+      city: '',
+      province: '',
+      experience: '',
+      motivation: ''
+    });
+
+    toast({
+      title: "Form Terkirim!",
+      description: "Anda akan diarahkan ke WhatsApp untuk mengirim data pendaftaran.",
+    });
+  };
   return (
     <section id="reseller" className="py-20 bg-white">
       <div className="container mx-auto px-4">
@@ -26,7 +80,7 @@ const ResellerForm = ({ handleResellerSubmit }: ResellerFormProps) => {
               <p className="text-blue-100">Keuntungan hingga 30% untuk setiap penjualan</p>
             </CardHeader>
             <CardContent className="p-8">
-              <form onSubmit={handleResellerSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -37,6 +91,8 @@ const ResellerForm = ({ handleResellerSubmit }: ResellerFormProps) => {
                       required
                       className="w-full"
                       placeholder="Masukkan nama lengkap"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     />
                   </div>
                   <div>
@@ -48,6 +104,8 @@ const ResellerForm = ({ handleResellerSubmit }: ResellerFormProps) => {
                       required
                       className="w-full"
                       placeholder="08xxxxxxxxxx"
+                      value={formData.whatsapp}
+                      onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}
                     />
                   </div>
                 </div>
@@ -61,6 +119,8 @@ const ResellerForm = ({ handleResellerSubmit }: ResellerFormProps) => {
                     required
                     className="w-full"
                     placeholder="email@example.com"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   />
                 </div>
 
@@ -74,6 +134,8 @@ const ResellerForm = ({ handleResellerSubmit }: ResellerFormProps) => {
                       required
                       className="w-full"
                       placeholder="Masukkan kota"
+                      value={formData.city}
+                      onChange={(e) => setFormData({ ...formData, city: e.target.value })}
                     />
                   </div>
                   <div>
@@ -85,6 +147,8 @@ const ResellerForm = ({ handleResellerSubmit }: ResellerFormProps) => {
                       required
                       className="w-full"
                       placeholder="Masukkan provinsi"
+                      value={formData.province}
+                      onChange={(e) => setFormData({ ...formData, province: e.target.value })}
                     />
                   </div>
                 </div>
@@ -97,6 +161,8 @@ const ResellerForm = ({ handleResellerSubmit }: ResellerFormProps) => {
                     className="w-full"
                     rows={4}
                     placeholder="Ceritakan pengalaman bisnis atau penjualan Anda (opsional)"
+                    value={formData.experience}
+                    onChange={(e) => setFormData({ ...formData, experience: e.target.value })}
                   />
                 </div>
 
@@ -109,6 +175,8 @@ const ResellerForm = ({ handleResellerSubmit }: ResellerFormProps) => {
                     className="w-full"
                     rows={4}
                     placeholder="Mengapa Anda ingin menjadi reseller AH Houseware?"
+                    value={formData.motivation}
+                    onChange={(e) => setFormData({ ...formData, motivation: e.target.value })}
                   />
                 </div>
 
