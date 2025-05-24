@@ -7,7 +7,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from 'react-helmet-async';
 import { AdminProvider } from './contexts/AdminContext';
 
-import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
@@ -28,7 +27,6 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
-            <NavBar />
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/artikel/:articleId" element={<ArticleDetail />} />
