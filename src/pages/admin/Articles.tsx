@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { useToast } from "@/components/ui/use-toast";
 import { Eye, Pencil, Trash } from 'lucide-react';
+import AdminNav from '@/components/admin/AdminNav';
 
 interface Article {
   id: number;
@@ -29,10 +30,16 @@ export default function Articles() {
       return;
     }
 
-    // Load articles from localStorage
+    // Load articles from localStorage or initialize with defaults
     const savedArticles = localStorage.getItem('ah_articles');
     if (savedArticles) {
       setArticles(JSON.parse(savedArticles));
+    } else {
+      // Import default articles
+      import('@/data/articles').then(({ articles: defaultArticles }) => {
+        localStorage.setItem('ah_articles', JSON.stringify(defaultArticles));
+        setArticles(defaultArticles);
+      });
     }
   }, [navigate]);
 
@@ -58,7 +65,9 @@ export default function Articles() {
   };
 
   return (
-    <div className="container mx-auto py-8 px-4">
+    <div>
+      <AdminNav />
+      <div className="container mx-auto px-4">
       <Card className="w-full">
         <CardHeader className="flex flex-row items-center justify-between">
           <div>
@@ -127,6 +136,7 @@ export default function Articles() {
           </Table>
         </CardContent>
       </Card>
+      </div>
     </div>
   );
 }

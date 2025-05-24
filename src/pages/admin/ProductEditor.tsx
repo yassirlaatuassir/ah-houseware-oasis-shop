@@ -22,7 +22,7 @@ export default function ProductEditor() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { toast } = useToast();
-  const isEditMode = id !== 'new';
+  const isEditMode = id !== undefined && id !== 'new';
 
   const [product, setProduct] = useState<Product>({
     id: 0,
@@ -57,7 +57,7 @@ export default function ProductEditor() {
     }
   }, [id, isEditMode, navigate]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     // Format prices to include 'Rp' if not present
@@ -67,9 +67,10 @@ export default function ProductEditor() {
       originalPrice: product.originalPrice.startsWith('Rp') ? product.originalPrice : `Rp ${product.originalPrice}`
     };
 
-    // Get existing products
-    const savedProducts = localStorage.getItem('ah_products');
-    let products = savedProducts ? JSON.parse(savedProducts) : [];
+    try {
+      // Get existing products
+      const savedProducts = localStorage.getItem('ah_products');
+      let products = savedProducts ? JSON.parse(savedProducts) : [];
 
     if (isEditMode) {
       // Update existing product
@@ -95,9 +96,23 @@ export default function ProductEditor() {
       });
     }
 
-    // Save back to localStorage
-    localStorage.setItem('ah_products', JSON.stringify(products));
-    navigate('/admin/products');
+      // Save back to localStorage
+      localStorage.setItem('ah_products', JSON.stringify(products));
+      
+      toast({
+        title: isEditMode ? "Product Updated" : "Product Created",
+        description: isEditMode ? "The product has been successfully updated." : "The new product has been successfully created.",
+      });
+
+      navigate('/admin/products');
+    } catch (error) {
+      console.error('Error saving product:', error);
+      toast({
+        title: "Error",
+        description: "There was a problem saving the product. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (

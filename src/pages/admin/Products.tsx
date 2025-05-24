@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { useToast } from "@/components/ui/use-toast";
 import { Eye, Pencil, Trash } from 'lucide-react';
+import AdminNav from '@/components/admin/AdminNav';
 
 interface Product {
   id: number;
@@ -62,7 +63,9 @@ export default function Products() {
   };
 
   return (
-    <div className="container mx-auto py-8 px-4">
+    <div>
+      <AdminNav />
+      <div className="container mx-auto px-4">
       <Card className="w-full">
         <CardHeader className="flex flex-row items-center justify-between">
           <div>
@@ -136,6 +139,7 @@ export default function Products() {
           </Table>
         </CardContent>
       </Card>
+      </div>
     </div>
   );
 }

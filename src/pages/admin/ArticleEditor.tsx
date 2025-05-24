@@ -22,10 +22,10 @@ export default function ArticleEditor() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { toast } = useToast();
-  const isEditMode = id !== 'new';
+  const isEditMode = id !== undefined && id !== 'new';
 
   const [article, setArticle] = useState<Article>({
-    id: 0,
+    id: isEditMode ? 0 : Date.now(),
     title: '',
     content: '',
     excerpt: '',
@@ -56,12 +56,13 @@ export default function ArticleEditor() {
     }
   }, [id, isEditMode, navigate]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Get existing articles
-    const savedArticles = localStorage.getItem('ah_articles');
-    let articles = savedArticles ? JSON.parse(savedArticles) : [];
+    try {
+      // Get existing articles
+      const savedArticles = localStorage.getItem('ah_articles');
+      let articles = savedArticles ? JSON.parse(savedArticles) : [];
 
     if (isEditMode) {
       // Update existing article
@@ -87,9 +88,23 @@ export default function ArticleEditor() {
       });
     }
 
-    // Save back to localStorage
-    localStorage.setItem('ah_articles', JSON.stringify(articles));
-    navigate('/admin/articles');
+      // Save back to localStorage
+      localStorage.setItem('ah_articles', JSON.stringify(articles));
+      
+      toast({
+        title: isEditMode ? "Article Updated" : "Article Created",
+        description: isEditMode ? "The article has been successfully updated." : "The new article has been successfully created.",
+      });
+
+      navigate('/admin/articles');
+    } catch (error) {
+      console.error('Error saving article:', error);
+      toast({
+        title: "Error",
+        description: "There was a problem saving the article. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (

@@ -13,6 +13,86 @@ export interface Article {
 export const articles: Article[] = [
   {
     id: 1,
+    title: 'Tips Memilih Panci Berkualitas untuk Dapur Anda',
+    content: `Panci adalah peralatan dapur yang sangat penting dalam aktivitas memasak sehari-hari. Berikut adalah beberapa tips untuk memilih panci berkualitas:
+
+1. Perhatikan Bahan Material
+- Stainless steel: Tahan lama dan tidak bereaksi dengan makanan
+- Aluminium: Ringan dan konduktor panas yang baik
+- Besi cor: Tahan lama dan menyimpan panas dengan baik
+
+2. Periksa Ketebalan
+Panci yang baik memiliki ketebalan yang cukup untuk mendistribusikan panas secara merata.
+
+3. Perhatikan Handle
+Pastikan handle terpasang dengan kuat dan tahan panas.
+
+4. Pertimbangkan Ukuran
+Pilih ukuran sesuai kebutuhan memasak Anda.`,
+    excerpt: 'Panduan lengkap memilih panci berkualitas untuk melengkapi dapur Anda.',
+    image: 'https://images.unsplash.com/photo-1584284270489-91e2cf5d33e8?w=800&h=400&fit=crop',
+    date: '2024-01-15',
+    author: 'Sarah Kusuma',
+    slug: 'tips-memilih-panci-berkualitas'
+  },
+  {
+    id: 2,
+    title: 'Cara Merawat Peralatan Masak Anti Lengket',
+    content: `Peralatan masak anti lengket membutuhkan perawatan khusus agar tetap awet. Berikut tips perawatannya:
+
+1. Gunakan Alat yang Tepat
+- Hindari penggunaan alat metal
+- Gunakan spatula kayu atau silikon
+
+2. Cara Mencuci yang Benar
+- Biarkan peralatan dingin sebelum dicuci
+- Gunakan spons lembut
+- Hindari steel wool
+
+3. Penyimpanan
+- Simpan di tempat kering
+- Hindari menumpuk peralatan
+
+4. Tips Tambahan
+- Gunakan api sedang
+- Hindari spray oil`,
+    excerpt: 'Pelajari cara merawat peralatan masak anti lengket agar lebih awet.',
+    image: 'https://images.unsplash.com/photo-1593618998760-61e6c8e2dfd0?w=800&h=400&fit=crop',
+    date: '2024-02-20',
+    author: 'Chef Budi',
+    slug: 'cara-merawat-peralatan-masak-anti-lengket'
+  },
+  {
+    id: 3,
+    title: 'Keuntungan Menggunakan Rice Cooker Digital',
+    content: `Rice Cooker digital menawarkan berbagai keunggulan dibanding rice cooker tradisional:
+
+1. Fitur Canggih
+- Timer yang dapat diatur
+- Multiple cooking mode
+- Keep warm function
+
+2. Hasil Masakan
+- Nasi lebih pulen
+- Matang merata
+- Tetap hangat hingga 24 jam
+
+3. Kemudahan Penggunaan
+- Interface yang user-friendly
+- Program yang dapat disesuaikan
+- Pembersihan mudah
+
+4. Hemat Energi
+- Penggunaan listrik efisien
+- Auto shut-off`,
+    excerpt: 'Temukan berbagai keunggulan rice cooker digital untuk dapur modern Anda.',
+    image: 'https://images.unsplash.com/photo-1584269600519-112d071b35e6?w=800&h=400&fit=crop',
+    date: '2024-03-10',
+    author: 'Tech Kitchen Team',
+    slug: 'keuntungan-menggunakan-rice-cooker-digital'
+  },
+  {
+    id: 4,
     title: 'Tips Memilih Panci yang Tepat untuk Dapur Anda',
     excerpt: 'Panduan lengkap memilih panci berkualitas untuk berbagai jenis masakan yang akan membantu Anda memasak lebih efisien dan lezat.',
     image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=300&fit=crop',
