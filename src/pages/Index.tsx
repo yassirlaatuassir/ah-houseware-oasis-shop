@@ -57,8 +57,10 @@ const Index = () => {
     }
   ];
 
-  const handleWhatsAppClick = () => {
-    const message = "Halo AH Houseware! Saya tertarik dengan produk peralatan rumah tangga Anda. Bisakah Anda memberikan informasi lebih lanjut?";
+  const handleWhatsAppClick = (product?: { name: string; price: string }) => {
+    const message = product
+      ? `Halo AH Houseware! Saya tertarik dengan produk ${product.name} dengan harga ${product.price}. Bisakah Anda memberikan informasi lebih lanjut tentang produk ini?`
+      : "Halo AH Houseware! Saya tertarik dengan produk peralatan rumah tangga Anda. Bisakah Anda memberikan informasi lebih lanjut?";
     window.open(`https://wa.me/6281234567890?text=${encodeURIComponent(message)}`, '_blank');
   };
 
