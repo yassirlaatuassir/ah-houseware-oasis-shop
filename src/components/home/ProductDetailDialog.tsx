@@ -6,7 +6,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { MessageCircle, Star } from "lucide-react";
+import { Star } from "lucide-react";
 
 interface ProductDetailDialogProps {
   product: {
@@ -21,14 +21,14 @@ interface ProductDetailDialogProps {
   } | null;
   isOpen: boolean;
   onClose: () => void;
-  onWhatsAppClick: () => void;
+
 }
 
 export default function ProductDetailDialog({
   product,
   isOpen,
   onClose,
-  onWhatsAppClick,
+
 }: ProductDetailDialogProps) {
   if (!product) return null;
 
@@ -89,13 +89,7 @@ export default function ProductDetailDialog({
               </div>
             </div>
 
-            <Button
-              onClick={onWhatsAppClick}
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white py-6 text-lg"
-            >
-              <MessageCircle className="w-5 h-5 mr-2" />
-              Pesan Sekarang
-            </Button>
+
           </div>
         </div>
       </DialogContent>

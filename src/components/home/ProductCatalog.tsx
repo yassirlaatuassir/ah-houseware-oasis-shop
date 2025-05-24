@@ -13,11 +13,10 @@ interface Product {
   sold: number;
 }
 
-interface ProductCatalogProps {
-  handleWhatsAppClick: () => void;
-}
+// No props needed
+interface ProductCatalogProps {}
 
-const ProductCatalog = ({ handleWhatsAppClick }: ProductCatalogProps) => {
+const ProductCatalog = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isDetailOpen, setIsDetailOpen] = useState(false);
@@ -112,7 +111,6 @@ const ProductCatalog = ({ handleWhatsAppClick }: ProductCatalogProps) => {
             <ProductCard 
               key={product.id} 
               product={product}
-              handleWhatsAppClick={() => handleWhatsAppClick(product)}
               onCardClick={() => {
                 setSelectedProduct(product);
                 setIsDetailOpen(true);
@@ -125,7 +123,7 @@ const ProductCatalog = ({ handleWhatsAppClick }: ProductCatalogProps) => {
         isOpen={isDetailOpen} 
         product={selectedProduct} 
         onClose={() => setIsDetailOpen(false)}
-        onWhatsAppClick={() => selectedProduct && handleWhatsAppClick(selectedProduct)}
+
       />
     </section>
   );

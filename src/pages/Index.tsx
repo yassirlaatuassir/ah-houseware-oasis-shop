@@ -13,11 +13,10 @@ import ArticlesSection from '@/components/home/ArticlesSection';
 import TestimonialsSection from '@/components/home/TestimonialsSection';
 import ResellerForm from '@/components/home/ResellerForm';
 import Footer from '@/components/layout/Footer';
-import FloatingWhatsApp from '@/components/home/FloatingWhatsApp';
+
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState('beranda');
-  const [whatsappVisible, setWhatsappVisible] = useState(true);
   const [articles, setArticles] = useState(defaultArticles);
 
   useEffect(() => {
@@ -57,12 +56,6 @@ const Index = () => {
     }
   ];
 
-  const handleWhatsAppClick = (product?: { name: string; price: string }) => {
-    const message = product
-      ? `Halo AH Houseware! Saya tertarik dengan produk ${product.name} dengan harga ${product.price}. Bisakah Anda memberikan informasi lebih lanjut tentang produk ini?`
-      : "Halo AH Houseware! Saya tertarik dengan produk peralatan rumah tangga Anda. Bisakah Anda memberikan informasi lebih lanjut?";
-    window.open(`https://wa.me/6281234567890?text=${encodeURIComponent(message)}`, '_blank');
-  };
 
   
 
@@ -86,12 +79,10 @@ const Index = () => {
         <Header 
           activeSection={activeSection} 
           scrollToSection={scrollToSection} 
-          handleWhatsAppClick={handleWhatsAppClick}
         />
         
         <HeroSection 
           scrollToSection={scrollToSection} 
-          handleWhatsAppClick={handleWhatsAppClick}
         />
         
         <AboutSection />
@@ -106,11 +97,7 @@ const Index = () => {
         
         <Footer />
         
-        <FloatingWhatsApp 
-          whatsappVisible={whatsappVisible} 
-          setWhatsappVisible={setWhatsappVisible}
-          handleWhatsAppClick={handleWhatsAppClick}
-        />
+
       </div>
     </>
   );

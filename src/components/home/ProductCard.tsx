@@ -1,6 +1,6 @@
 
 import { Star } from 'lucide-react';
-import { MessageCircle } from 'lucide-react';
+
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
@@ -15,10 +15,10 @@ interface ProductCardProps {
     rating: number;
     sold: number;
   };
-  handleWhatsAppClick: () => void;
+
 }
 
-const ProductCard = ({ product, handleWhatsAppClick, onCardClick }: ProductCardProps) => {
+const ProductCard = ({ product, onCardClick }: ProductCardProps) => {
   return (
     <Card 
       key={product.id} 
@@ -55,16 +55,7 @@ const ProductCard = ({ product, handleWhatsAppClick, onCardClick }: ProductCardP
           <span className="text-2xl font-bold text-blue-600">{product.price}</span>
           <span className="text-lg text-gray-400 line-through">{product.originalPrice}</span>
         </div>
-        <Button
-          onClick={(e) => {
-            e.stopPropagation();
-            handleWhatsAppClick();
-          }}
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white"
-        >
-          <MessageCircle className="w-4 h-4 mr-2" />
-          Pesan Sekarang
-        </Button>
+
       </CardContent>
     </Card>
   );

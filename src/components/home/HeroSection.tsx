@@ -1,13 +1,12 @@
 
-import { ShoppingCart, MessageCircle } from 'lucide-react';
+import { ShoppingCart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 interface HeroSectionProps {
   scrollToSection: (sectionId: string) => void;
-  handleWhatsAppClick: () => void;
 }
 
-const HeroSection = ({ scrollToSection, handleWhatsAppClick }: HeroSectionProps) => {
+const HeroSection = ({ scrollToSection }: HeroSectionProps) => {
   return (
     <section id="beranda" className="py-20 bg-gradient-to-r from-blue-600 to-sky-600 text-white">
       <div className="container mx-auto px-4 text-center">
@@ -25,15 +24,7 @@ const HeroSection = ({ scrollToSection, handleWhatsAppClick }: HeroSectionProps)
             <ShoppingCart className="w-5 h-5 mr-2" />
             Lihat Katalog
           </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            onClick={handleWhatsAppClick}
-            className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-3 text-lg"
-          >
-            <MessageCircle className="w-5 h-5 mr-2" />
-            Hubungi Kami
-          </Button>
+
         </div>
       </div>
     </section>
