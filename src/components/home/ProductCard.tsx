@@ -5,6 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
 interface ProductCardProps {
+  onCardClick: () => void;
   product: {
     id: number;
     name: string;
@@ -17,9 +18,13 @@ interface ProductCardProps {
   handleWhatsAppClick: () => void;
 }
 
-const ProductCard = ({ product, handleWhatsAppClick }: ProductCardProps) => {
+const ProductCard = ({ product, handleWhatsAppClick, onCardClick }: ProductCardProps) => {
   return (
-    <Card key={product.id} className="group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+    <Card 
+      key={product.id} 
+      className="group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
+      onClick={onCardClick}
+    >
       <div className="relative overflow-hidden rounded-t-lg h-[200px]">
         <img
           src={product.image}
@@ -51,7 +56,10 @@ const ProductCard = ({ product, handleWhatsAppClick }: ProductCardProps) => {
           <span className="text-lg text-gray-400 line-through">{product.originalPrice}</span>
         </div>
         <Button
-          onClick={handleWhatsAppClick}
+          onClick={(e) => {
+            e.stopPropagation();
+            handleWhatsAppClick();
+          }}
           className="w-full bg-blue-600 hover:bg-blue-700 text-white"
         >
           <MessageCircle className="w-4 h-4 mr-2" />

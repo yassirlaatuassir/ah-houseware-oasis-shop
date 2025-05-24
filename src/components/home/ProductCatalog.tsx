@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import ProductCard from './ProductCard';
+import ProductDetailDialog from './ProductDetailDialog';
 
 interface Product {
   id: number;
@@ -18,6 +19,8 @@ interface ProductCatalogProps {
 
 const ProductCatalog = ({ handleWhatsAppClick }: ProductCatalogProps) => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [isDetailOpen, setIsDetailOpen] = useState(false);
 
   useEffect(() => {
     // Load products from localStorage or initialize with defaults
@@ -108,12 +111,22 @@ const ProductCatalog = ({ handleWhatsAppClick }: ProductCatalogProps) => {
           {products.map((product) => (
             <ProductCard 
               key={product.id} 
-              product={product} 
-              handleWhatsAppClick={handleWhatsAppClick} 
+              product={product}
+              handleWhatsAppClick={() => handleWhatsAppClick(product)}
+              onCardClick={() => {
+                setSelectedProduct(product);
+                setIsDetailOpen(true);
+              }}
             />
           ))}
         </div>
       </div>
+      <ProductDetailDialog 
+        isOpen={isDetailOpen} 
+        product={selectedProduct} 
+        onClose={() => setIsDetailOpen(false)}
+        onWhatsAppClick={() => selectedProduct && handleWhatsAppClick(selectedProduct)}
+      />
     </section>
   );
 };
