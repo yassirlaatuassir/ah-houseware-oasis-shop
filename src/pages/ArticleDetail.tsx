@@ -1,187 +1,131 @@
 
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+<<<<<<< HEAD
 import { ArrowLeft, Phone, Mail, MapPin, Facebook, Instagram, Twitter } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import NotFound from './NotFound';
 import { articles as defaultArticles } from '@/data/articles';
 import { SEO } from '@/components/SEO';
+=======
+import { Helmet } from 'react-helmet-async';
+import { ArrowLeft, Calendar, Edit } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { articles as defaultArticles, Article } from '@/data/articles';
+import { useAdmin } from '@/contexts/AdminContext';
+>>>>>>> b46c3ded9c946945a1d3d9d77d379a78404bcf7d
 
 const ArticleDetail = () => {
   const { articleId } = useParams();
-  const articles = defaultArticles;
-  
-  const article = articles.find(a => a.id.toString() === articleId);
-  
+  const [article, setArticle] = useState<Article | null>(null);
+  const [articles, setArticles] = useState(defaultArticles);
+  const { isAdmin } = useAdmin();
+
+  // Load articles from localStorage if available
   useEffect(() => {
-    // Scroll to top when the component mounts
-    window.scrollTo(0, 0);
+    const savedArticles = localStorage.getItem('ah_articles');
+    if (savedArticles) {
+      setArticles(JSON.parse(savedArticles));
+    }
   }, []);
-  
+
+  // Find the article by ID once articles are loaded
+  useEffect(() => {
+    const foundArticle = articles.find(a => a.id.toString() === articleId);
+    if (foundArticle) {
+      setArticle(foundArticle);
+    }
+  }, [articleId, articles]);
+
   if (!article) {
-    return <NotFound />;
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50 flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-gray-800 mb-4">Artikel tidak ditemukan</h1>
+          <Link to="/">
+            <Button variant="outline">Kembali ke Beranda</Button>
+          </Link>
+        </div>
+      </div>
+    );
   }
 
   return (
+<<<<<<< HEAD
     <>
       <SEO
         title={`${article.title} - AH Houseware`}
         description={article.excerpt}
       />
+=======
+    <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50">
+      <Helmet>
+        <title>{article.title} - AH Houseware</title>
+        <meta name="description" content={article.excerpt} />
+      </Helmet>
+>>>>>>> b46c3ded9c946945a1d3d9d77d379a78404bcf7d
       
-      <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50">
-        {/* Header retained from Index page */}
-        <header className="bg-white shadow-lg sticky top-0 z-40">
-          <div className="container mx-auto px-4 py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center space-x-2">
-                <Link to="/" className="flex items-center space-x-2">
-                  <div className="w-10 h-10 bg-gradient-to-r from-green-600 to-emerald-600 rounded-lg flex items-center justify-center">
-                    <span className="text-white font-bold text-xl">AH</span>
-                  </div>
-                  <div>
-                    <h1 className="text-2xl font-bold text-gray-800">AH Houseware</h1>
-                    <p className="text-sm text-green-600">Peralatan Rumah Tangga Berkualitas</p>
-                  </div>
-                </Link>
+      {/* Header */}
+      <header className="bg-white shadow-lg sticky top-0 z-40">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-2">
+              <div className="w-10 h-10 bg-gradient-to-r from-green-600 to-emerald-600 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-xl">AH</span>
+              </div>
+              <div>
+                <h1 className="text-2xl font-bold text-gray-800">AH Houseware</h1>
+                <p className="text-sm text-green-600">Peralatan Rumah Tangga Berkualitas</p>
               </div>
             </div>
           </div>
-        </header>
+        </div>
+      </header>
 
-        {/* Article Content */}
-        <div className="container mx-auto px-4 py-12">
-          <div className="max-w-3xl mx-auto">
-            <Button 
-              variant="outline" 
-              onClick={() => window.history.back()} 
-              className="mb-6 flex items-center"
-            >
-              <ArrowLeft className="mr-2 h-4 w-4" /> Kembali
+      <div className="container mx-auto px-4 py-12">
+        <div className="max-w-4xl mx-auto">
+          <Link to="/#artikel">
+            <Button variant="outline" className="mb-6 flex items-center">
+              <ArrowLeft className="mr-2 h-4 w-4" /> Kembali ke Daftar Artikel
             </Button>
+          </Link>
+          
+          {/* Article content */}
+          <div className="bg-white rounded-xl shadow-md overflow-hidden">
+            <img src={article.image} alt={article.title} className="w-full h-64 object-cover" />
             
-            <div className="bg-white rounded-xl shadow-md overflow-hidden">
-              <img 
-                src={article.image} 
-                alt={article.title}
-                className="w-full h-[400px] object-cover"
-              />
+            <div className="p-8">
+              <div className="flex justify-between items-center mb-4">
+                <div className="flex items-center text-gray-500 text-sm">
+                  <Calendar className="h-4 w-4 mr-1" />
+                  <span>{article.date}</span>
+                </div>
+                {isAdmin && (
+                  <Link to={`/artikel/edit/${article.id}`}>
+                    <Button size="sm" className="flex items-center gap-1 bg-green-600 hover:bg-green-700">
+                      <Edit className="h-4 w-4" /> Edit
+                    </Button>
+                  </Link>
+                )}
+              </div>
               
-              <div className="p-8">
-                <div className="text-sm text-green-600 mb-3">
-                  {article.date} • {article.author}
-                </div>
-                <h1 className="text-3xl font-bold text-gray-800 mb-6">
-                  {article.title}
-                </h1>
-                
-                <div className="prose max-w-none text-gray-600">
-                  {/* This would be replaced with the actual article content */}
-                  <p className="mb-4">
-                    {article.excerpt}
-                  </p>
-                  <p className="mb-4">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, 
-                    nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl. Sed euismod, nisl vel ultricies lacinia, 
-                    nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl.
-                  </p>
-                  <h2 className="text-2xl font-semibold my-4">Bagaimana Memilih Produk Berkualitas</h2>
-                  <p className="mb-4">
-                    Memilih peralatan rumah tangga berkualitas bisa jadi tantangan tersendiri. Beberapa hal yang perlu diperhatikan adalah:
-                  </p>
-                  <ul className="list-disc pl-6 mb-4">
-                    <li>Kualitas bahan yang digunakan</li>
-                    <li>Reputasi merek di pasaran</li>
-                    <li>Fitur dan spesifikasi produk</li>
-                    <li>Garansi yang diberikan</li>
-                    <li>Ulasan dari pengguna lain</li>
-                  </ul>
-                  <p>
-                    Dengan memperhatikan poin-poin di atas, Anda dapat memastikan bahwa investasi Anda pada peralatan rumah tangga akan sepadan dan memberikan kepuasan jangka panjang.
-                  </p>
-                </div>
+              <h1 className="text-3xl font-bold text-gray-800 mb-4">{article.title}</h1>
+              <p className="text-gray-600 mb-6 italic">{article.excerpt}</p>
+              
+              <div className="prose max-w-none">
+                {article.content?.split('\n\n').map((paragraph, index) => (
+                  <p key={index} className="mb-4">{paragraph}</p>
+                ))}
+              </div>
+              
+              <div className="mt-8 text-sm text-gray-600">
+                Ditulis oleh: {article.author}
               </div>
             </div>
           </div>
         </div>
-        
-        {/* Footer would be included here, keeping it same with the main page */}
-        <footer className="bg-gray-800 text-white py-16">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-gradient-to-r from-green-600 to-emerald-600 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold">AH</span>
-                </div>
-                <span className="text-xl font-bold">AH Houseware</span>
-              </div>
-              <p className="text-gray-300 mb-4">
-                Peralatan rumah tangga berkualitas premium dengan harga terjangkau untuk rumah impian Anda.
-              </p>
-              <div className="flex space-x-4">
-                <Facebook className="w-6 h-6 text-blue-400 hover:text-blue-300 cursor-pointer" />
-                <Instagram className="w-6 h-6 text-pink-400 hover:text-pink-300 cursor-pointer" />
-                <Twitter className="w-6 h-6 text-blue-400 hover:text-blue-300 cursor-pointer" />
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Kategori Produk</h3>
-              <ul className="space-y-2 text-gray-300">
-                <li><a href="#" className="hover:text-green-400">Peralatan Masak</a></li>
-                <li><a href="#" className="hover:text-green-400">Elektronik Dapur</a></li>
-                <li><a href="#" className="hover:text-green-400">Peralatan Makan</a></li>
-                <li><a href="#" className="hover:text-green-400">Storage & Organizer</a></li>
-                <li><a href="#" className="hover:text-green-400">Cleaning Tools</a></li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Informasi</h3>
-              <ul className="space-y-2 text-gray-300">
-                <li><a href="#tentang" className="hover:text-green-400">Tentang Kami</a></li>
-                <li><a href="#" className="hover:text-green-400">Kebijakan Privasi</a></li>
-                <li><a href="#" className="hover:text-green-400">Syarat & Ketentuan</a></li>
-                <li><a href="#" className="hover:text-green-400">Panduan Belanja</a></li>
-                <li><a href="#reseller" className="hover:text-green-400">Program Reseller</a></li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold mb-4">Hubungi Kami</h3>
-              <ul className="space-y-3 text-gray-300">
-                <li className="flex items-center space-x-3">
-                  <Phone className="w-5 h-5 text-green-400" />
-                  <span>+62 812-3456-7890</span>
-                </li>
-                <li className="flex items-center space-x-3">
-                  <Mail className="w-5 h-5 text-green-400" />
-                  <span>info@ahhouseware.com</span>
-                </li>
-                <li className="flex items-center space-x-3">
-                  <MapPin className="w-5 h-5 text-green-400" />
-                  <span>Jl. Raya Dapur No. 123, Jakarta Selatan</span>
-                </li>
-              </ul>
-              
-              <div className="mt-6">
-                <h4 className="font-semibold mb-2">Jam Operasional</h4>
-                <p className="text-sm text-gray-300">Senin - Sabtu: 08:00 - 17:00</p>
-                <p className="text-sm text-gray-300">Minggu: 09:00 - 15:00</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="border-t border-gray-700 mt-12 pt-8 text-center">
-            <p className="text-gray-400">
-              © 2024 AH Houseware. All rights reserved. | Designed with ❤️ for Indonesian Families
-            </p>
-          </div>
-        </div>
-      </footer>
       </div>
-    </>
+    </div>
   );
 };
 

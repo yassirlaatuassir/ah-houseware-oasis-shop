@@ -1,8 +1,8 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { toast } from 'sonner';
 import { Helmet } from 'react-helmet-async';
-import { articles } from '@/data/articles';
+import { articles as defaultArticles } from '@/data/articles';
 
 // Import components
 import Header from '@/components/layout/Header';
@@ -18,6 +18,15 @@ import FloatingWhatsApp from '@/components/home/FloatingWhatsApp';
 const Index = () => {
   const [activeSection, setActiveSection] = useState('beranda');
   const [whatsappVisible, setWhatsappVisible] = useState(true);
+  const [articles, setArticles] = useState(defaultArticles);
+
+  useEffect(() => {
+    // Load articles from localStorage if available
+    const savedArticles = localStorage.getItem('ah_articles');
+    if (savedArticles) {
+      setArticles(JSON.parse(savedArticles));
+    }
+  }, []);
 
   const products = [
     {
