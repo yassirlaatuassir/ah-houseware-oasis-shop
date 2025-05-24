@@ -13,6 +13,8 @@ import ArticleDetail from "./pages/ArticleDetail";
 import Login from "./pages/admin/Login";
 import Articles from "./pages/admin/Articles";
 import ArticleEditor from "./pages/admin/ArticleEditor";
+import Products from "./pages/admin/Products";
+import ProductEditor from "./pages/admin/ProductEditor";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +33,9 @@ const App = () => (
               <Route path="/admin/articles" element={<Articles />} />
               <Route path="/admin/articles/new" element={<ArticleEditor />} />
               <Route path="/admin/articles/edit/:id" element={<ArticleEditor />} />
+              <Route path="/admin/products" element={<Products />} />
+              <Route path="/admin/products/new" element={<ProductEditor />} />
+              <Route path="/admin/products/edit/:id" element={<ProductEditor />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>

@@ -1,20 +1,31 @@
-
+import { useState, useEffect } from 'react';
 import ProductCard from './ProductCard';
 
+interface Product {
+  id: number;
+  name: string;
+  price: string;
+  originalPrice: string;
+  image: string;
+  description: string;
+  rating: number;
+  sold: number;
+}
+
 interface ProductCatalogProps {
-  products: Array<{
-    id: number;
-    name: string;
-    price: string;
-    originalPrice: string;
-    image: string;
-    rating: number;
-    sold: number;
-  }>;
   handleWhatsAppClick: () => void;
 }
 
-const ProductCatalog = ({ products, handleWhatsAppClick }: ProductCatalogProps) => {
+const ProductCatalog = ({ handleWhatsAppClick }: ProductCatalogProps) => {
+  const [products, setProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    // Load products from localStorage
+    const savedProducts = localStorage.getItem('ah_products');
+    if (savedProducts) {
+      setProducts(JSON.parse(savedProducts));
+    }
+  }, []);
   return (
     <section id="katalog" className="py-20 bg-gray-50">
       <div className="container mx-auto px-4">

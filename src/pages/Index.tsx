@@ -28,62 +28,7 @@ const Index = () => {
     }
   }, []);
 
-  const products = [
-    {
-      id: 1,
-      name: 'Set Panci Stainless Steel 5 Pcs',
-      price: 'Rp 459.000',
-      originalPrice: 'Rp 650.000',
-      image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=400&fit=crop',
-      rating: 4.8,
-      sold: 150
-    },
-    {
-      id: 2,
-      name: 'Blender Multifungsi 2L',
-      price: 'Rp 325.000',
-      originalPrice: 'Rp 450.000',
-      image: 'https://images.unsplash.com/photo-1570197788417-0e82375c9371?w=400&h=400&fit=crop',
-      rating: 4.7,
-      sold: 89
-    },
-    {
-      id: 3,
-      name: 'Rice Cooker Digital 1.8L',
-      price: 'Rp 285.000',
-      originalPrice: 'Rp 380.000',
-      image: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&h=400&fit=crop',
-      rating: 4.9,
-      sold: 203
-    },
-    {
-      id: 4,
-      name: 'Set Pisau Dapur Premium 6 Pcs',
-      price: 'Rp 189.000',
-      originalPrice: 'Rp 250.000',
-      image: 'https://images.unsplash.com/photo-1593618998160-e34014e67546?w=400&h=400&fit=crop',
-      rating: 4.6,
-      sold: 76
-    },
-    {
-      id: 5,
-      name: 'Wajan Anti Lengket 28cm',
-      price: 'Rp 145.000',
-      originalPrice: 'Rp 200.000',
-      image: 'https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=400&h=400&fit=crop',
-      rating: 4.5,
-      sold: 112
-    },
-    {
-      id: 6,
-      name: 'Mixer Stand 5L Professional',
-      price: 'Rp 1.250.000',
-      originalPrice: 'Rp 1.500.000',
-      image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=400&fit=crop',
-      rating: 4.9,
-      sold: 34
-    }
-  ];
+  
 
   const testimonials = [
     {
@@ -149,10 +94,7 @@ const Index = () => {
         
         <AboutSection />
         
-        <ProductCatalog 
-          products={products} 
-          handleWhatsAppClick={handleWhatsAppClick} 
-        />
+        <ProductCatalog handleWhatsAppClick={handleWhatsAppClick} />
         
         <ArticlesSection articles={articles} />
         
