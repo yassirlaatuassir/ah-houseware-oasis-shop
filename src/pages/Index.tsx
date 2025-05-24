@@ -138,7 +138,7 @@ const Index = () => {
         <link rel="canonical" href="https://ahhouseware.com" />
       </Helmet>
       
-      <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50">
+      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-sky-50">
         <Header 
           activeSection={activeSection} 
           scrollToSection={scrollToSection} 

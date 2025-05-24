@@ -24,7 +24,7 @@ const AdminLogin = () => {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-green-50 to-emerald-50">
+    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-blue-50 to-sky-50">
       <div className="w-full max-w-md rounded-xl bg-white p-8 shadow-md">
         <h1 className="mb-6 text-2xl font-bold text-gray-800">Admin Login</h1>
         
