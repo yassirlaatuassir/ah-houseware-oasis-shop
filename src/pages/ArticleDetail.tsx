@@ -5,7 +5,7 @@ import { ArrowLeft, Phone, Mail, MapPin, Facebook, Instagram, Twitter } from 'lu
 import { Button } from '@/components/ui/button';
 import NotFound from './NotFound';
 import { articles as defaultArticles } from '@/data/articles';
-import { Helmet } from 'react-helmet-async';
+import { SEO } from '@/components/SEO';
 
 const ArticleDetail = () => {
   const { articleId } = useParams();
@@ -24,16 +24,10 @@ const ArticleDetail = () => {
 
   return (
     <>
-      <Helmet>
-        <title>{article.title} - AH Houseware</title>
-        <meta name="description" content={article.excerpt} />
-        <meta property="og:title" content={article.title} />
-        <meta property="og:description" content={article.excerpt} />
-        <meta property="og:image" content={article.image} />
-        <meta property="og:type" content="article" />
-        <meta property="article:published_time" content={article.date} />
-        <meta property="article:author" content={article.author} />
-      </Helmet>
+      <SEO
+        title={`${article.title} - AH Houseware`}
+        description={article.excerpt}
+      />
       
       <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50">
         {/* Header retained from Index page */}
