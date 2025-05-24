@@ -7,6 +7,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from 'react-helmet-async';
 import { AdminProvider } from './contexts/AdminContext';
 
+import NavBar from "./components/NavBar";
+import ProtectedRoute from "./components/ProtectedRoute";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import ArticleDetail from "./pages/ArticleDetail";
@@ -26,16 +28,41 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            <NavBar />
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/artikel/:articleId" element={<ArticleDetail />} />
               <Route path="/admin/login" element={<Login />} />
-              <Route path="/admin/articles" element={<Articles />} />
-              <Route path="/admin/articles/new" element={<ArticleEditor />} />
-              <Route path="/admin/articles/edit/:id" element={<ArticleEditor />} />
-              <Route path="/admin/products" element={<Products />} />
-              <Route path="/admin/products/new" element={<ProductEditor />} />
-              <Route path="/admin/products/edit/:id" element={<ProductEditor />} />
+              <Route path="/admin/articles" element={
+                <ProtectedRoute>
+                  <Articles />
+                </ProtectedRoute>
+              } />
+              <Route path="/admin/articles/new" element={
+                <ProtectedRoute>
+                  <ArticleEditor />
+                </ProtectedRoute>
+              } />
+              <Route path="/admin/articles/edit/:id" element={
+                <ProtectedRoute>
+                  <ArticleEditor />
+                </ProtectedRoute>
+              } />
+              <Route path="/admin/products" element={
+                <ProtectedRoute>
+                  <Products />
+                </ProtectedRoute>
+              } />
+              <Route path="/admin/products/new" element={
+                <ProtectedRoute>
+                  <ProductEditor />
+                </ProtectedRoute>
+              } />
+              <Route path="/admin/products/edit/:id" element={
+                <ProtectedRoute>
+                  <ProductEditor />
+                </ProtectedRoute>
+              } />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
