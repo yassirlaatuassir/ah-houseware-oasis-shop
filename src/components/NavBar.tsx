@@ -33,11 +33,7 @@ export default function NavBar() {
                 </Button>
               </>
             )}
-            {!isAdmin && (
-              <Link to="/login" className="text-gray-700 hover:text-gray-900">
-                Admin Login
-              </Link>
-            )}
+            {/* Admin login accessible via direct URL only */}
           </div>
         </div>
       </div>
