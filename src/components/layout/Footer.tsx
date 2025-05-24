@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-to-r from-green-600 to-emerald-600 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-sky-600 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold">AH</span>
               </div>
               <span className="text-xl font-bold">AH Houseware</span>
@@ -26,22 +26,22 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Kategori Produk</h3>
             <ul className="space-y-2 text-gray-300">
-              <li><a href="#" className="hover:text-green-400">Peralatan Masak</a></li>
-              <li><a href="#" className="hover:text-green-400">Elektronik Dapur</a></li>
-              <li><a href="#" className="hover:text-green-400">Peralatan Makan</a></li>
-              <li><a href="#" className="hover:text-green-400">Storage & Organizer</a></li>
-              <li><a href="#" className="hover:text-green-400">Cleaning Tools</a></li>
+              <li><a href="#" className="hover:text-blue-400">Peralatan Masak</a></li>
+              <li><a href="#" className="hover:text-blue-400">Elektronik Dapur</a></li>
+              <li><a href="#" className="hover:text-blue-400">Peralatan Makan</a></li>
+              <li><a href="#" className="hover:text-blue-400">Storage & Organizer</a></li>
+              <li><a href="#" className="hover:text-blue-400">Cleaning Tools</a></li>
             </ul>
           </div>
 
           <div>
             <h3 className="text-lg font-semibold mb-4">Informasi</h3>
             <ul className="space-y-2 text-gray-300">
-              <li><a href="#tentang" className="hover:text-green-400">Tentang Kami</a></li>
-              <li><a href="#" className="hover:text-green-400">Kebijakan Privasi</a></li>
-              <li><a href="#" className="hover:text-green-400">Syarat & Ketentuan</a></li>
-              <li><a href="#" className="hover:text-green-400">Panduan Belanja</a></li>
-              <li><a href="#reseller" className="hover:text-green-400">Program Reseller</a></li>
+              <li><a href="#tentang" className="hover:text-blue-400">Tentang Kami</a></li>
+              <li><a href="#" className="hover:text-blue-400">Kebijakan Privasi</a></li>
+              <li><a href="#" className="hover:text-blue-400">Syarat & Ketentuan</a></li>
+              <li><a href="#" className="hover:text-blue-400">Panduan Belanja</a></li>
+              <li><a href="#reseller" className="hover:text-blue-400">Program Reseller</a></li>
             </ul>
           </div>
 

@@ -47,12 +47,12 @@ const ProductCard = ({ product, handleWhatsAppClick }: ProductCardProps) => {
           <span className="text-sm text-gray-500">• {product.sold} terjual</span>
         </div>
         <div className="flex items-center space-x-3 mb-4">
-          <span className="text-2xl font-bold text-green-600">{product.price}</span>
+          <span className="text-2xl font-bold text-blue-600">{product.price}</span>
           <span className="text-lg text-gray-400 line-through">{product.originalPrice}</span>
         </div>
         <Button
           onClick={handleWhatsAppClick}
-          className="w-full bg-green-600 hover:bg-green-700 text-white"
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white"
         >
           <MessageCircle className="w-4 h-4 mr-2" />
           Pesan Sekarang

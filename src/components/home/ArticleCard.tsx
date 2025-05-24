@@ -19,13 +19,13 @@ const ArticleCard = ({ article }: ArticleCardProps) => {
         />
       </div>
       <CardContent className="p-6">
-        <div className="text-sm text-green-600 mb-2">{article.date} • {article.author}</div>
-        <h3 className="text-xl font-semibold text-gray-800 mb-3 group-hover:text-green-600 transition-colors">
+        <div className="text-sm text-blue-600 mb-2">{article.date} • {article.author}</div>
+        <h3 className="text-xl font-semibold text-gray-800 mb-3 group-hover:text-blue-600 transition-colors">
           {article.title}
         </h3>
         <p className="text-gray-600 mb-4">{article.excerpt}</p>
         <Link to={`/artikel/${article.id}`}>
-          <Button variant="outline" className="w-full border-green-600 text-green-600 hover:bg-green-50">
+          <Button variant="outline" className="w-full border-blue-600 text-blue-600 hover:bg-blue-50">
             Baca Selengkapnya
           </Button>
         </Link>

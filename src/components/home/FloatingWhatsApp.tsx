@@ -28,7 +28,7 @@ const FloatingWhatsApp = ({
         
         <Button
           onClick={handleWhatsAppClick}
-          className="bg-green-500 hover:bg-green-600 text-white rounded-full w-16 h-16 shadow-lg animate-pulse"
+          className="bg-blue-500 hover:bg-blue-600 text-white rounded-full w-16 h-16 shadow-lg animate-pulse"
           size="lg"
         >
           <MessageCircle className="w-8 h-8" />

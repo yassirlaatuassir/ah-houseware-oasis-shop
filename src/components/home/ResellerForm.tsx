@@ -21,9 +21,9 @@ const ResellerForm = ({ handleResellerSubmit }: ResellerFormProps) => {
           </div>
 
           <Card className="shadow-lg">
-            <CardHeader className="bg-green-600 text-white text-center">
+            <CardHeader className="bg-blue-600 text-white text-center">
               <CardTitle className="text-2xl">Form Pendaftaran Reseller</CardTitle>
-              <p className="text-green-100">Keuntungan hingga 30% untuk setiap penjualan</p>
+              <p className="text-blue-100">Keuntungan hingga 30% untuk setiap penjualan</p>
             </CardHeader>
             <CardContent className="p-8">
               <form onSubmit={handleResellerSubmit} className="space-y-6">
@@ -114,7 +114,7 @@ const ResellerForm = ({ handleResellerSubmit }: ResellerFormProps) => {
 
                 <Button
                   type="submit"
-                  className="w-full bg-green-600 hover:bg-green-700 text-white py-3 text-lg"
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 text-lg"
                 >
                   Daftar Sekarang
                 </Button>

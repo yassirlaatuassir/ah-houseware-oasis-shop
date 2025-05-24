@@ -115,12 +115,12 @@ const ArticleEditor = () => {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gradient-to-r from-green-600 to-emerald-600 rounded-lg flex items-center justify-center">
+              <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-sky-600 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-xl">AH</span>
               </div>
               <div>
                 <h1 className="text-2xl font-bold text-gray-800">AH Houseware</h1>
-                <p className="text-sm text-green-600">Peralatan Rumah Tangga Berkualitas</p>
+                <p className="text-sm text-blue-600">Peralatan Rumah Tangga Berkualitas</p>
               </div>
             </div>
           </div>
@@ -220,7 +220,7 @@ const ArticleEditor = () => {
                 >
                   Batal
                 </Button>
-                <Button type="submit" className="bg-green-600 hover:bg-green-700">
+                <Button type="submit" className="bg-blue-600 hover:bg-blue-700">
                   {isEditMode ? 'Update Artikel' : 'Publikasikan Artikel'}
                 </Button>
               </div>

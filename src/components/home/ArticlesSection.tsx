@@ -24,7 +24,7 @@ const ArticlesSection = ({ articles }: ArticlesSectionProps) => {
           {isAdmin && (
             <div className="mt-6">
               <Link to="/artikel/new">
-                <Button className="bg-green-600 hover:bg-green-700 inline-flex items-center gap-2">
+                <Button className="bg-blue-600 hover:bg-blue-700 inline-flex items-center gap-2">
                   <PenLine className="h-4 w-4" /> Tulis Artikel Baru
                 </Button>
               </Link>
