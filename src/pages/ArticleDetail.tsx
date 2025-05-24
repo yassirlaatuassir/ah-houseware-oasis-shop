@@ -1,6 +1,7 @@
+
 import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Phone, Mail, MapPin, Facebook, Instagram, Twitter } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import NotFound from './NotFound';
 import { articles as defaultArticles } from '@/data/articles';
