@@ -19,7 +19,7 @@ const defaultProducts = [
     "name": "Set Panci Stainless Steel 5 Pcs",
     "price": "Rp 459.000",
     "originalPrice": "Rp 650.000",
-    "description": "Set panci premium dengan bahan stainless steel berkualitas tinggi. Terdiri dari 5 ukuran berbeda untuk berbagai kebutuhan memasak.",
+    "description": "Set panci premium dengan bahan stainless steel berkualitas tinggi. Terdiri dari 5 ukuran berbeda untuk berbagai kebutuhan memasak. UPDATED: Tahan panas dan mudah dibersihkan!",
     "image": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=400&fit=crop",
     "rating": 4.8,
     "sold": 150
