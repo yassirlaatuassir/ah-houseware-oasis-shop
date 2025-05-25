@@ -1,5 +1,5 @@
 // This file is auto-generated from localStorage data
-// Last updated: 2025-05-25T10:26:05.599Z
+// Last updated: 2025-05-25T10:40:49.653Z
 
 export interface Product {
   id: number;
@@ -26,11 +26,11 @@ const defaultProducts = [
   },
   {
     "id": 2,
-    "name": "Blender Multifungsi 2L",
-    "price": "Rp 325.000",
+    "name": "Koomas Blender 2.5L+800ML 220V 6 Pisau Blender Buah Multifungsi",
+    "price": "Rp 289.000",
     "originalPrice": "Rp 450.000",
-    "description": "Blender serbaguna dengan kapasitas 2L, cocok untuk smoothie, jus, dan menghaluskan bumbu. Dilengkapi dengan 3 kecepatan.",
-    "image": "https://images.unsplash.com/photo-1570197788417-0e82375c9371?w=400&h=400&fit=crop",
+    "description": "Koomas Blender 2.5L+800ML 220V 6 Pisau Blender Buah Multifungsi Chopper Juicer Bahan PC Food Grade Mesin Blender Mixer lce Crusher Jus Sayuran Jus Sereal Gilingan Smoothie Getar\n\nMenggambarkan:\n👍【1】Ini adalah blender berkecepatan super tinggi. Ini tidak hanya cocok untuk membuat jus sayuran dan buah-buahan, tetapi juga lebih cocok untuk mengaduk sereal dan kacang-kacangan. Bahkan bisa mengaduk es batu dan gelas.\n👍【2】 Kecepatan bilah juicer umum adalah 7000-15000 rpm, dan kecepatan bilah mixer ini adalah 50.000 rpm; juicer umum hanya dapat memotong bahan menjadi terak, tetapi mixer ini dapat menghancurkan bahan menjadi partikel yang lebih halus.\n👍【3】Umumnya, juicer memiliki fungsi tunggal, dan juga akan menghancurkan vitamin buah, menyebabkan jus buah teroksidasi dan terurai, dan kemudian berubah warna dan berlapis setelah berdiri.tulang digiling dan dihancurkan menjadi sup .\n\n📌Semua produk dilengkapi dengan gelas besar, dan jika Anda memilih opsi Gelas kecil, Anda akan mendapatkan tambahan gelas penggiling kecil！\n\n📌Gelas kecil tidak dapat digunakan untuk cairan, itu adalah gelas penggiling. Jika dituangkan air, akan bocor. Jika ingin menggunakan cairan, harap gunakan gelas besar！\n\n💖Informasi produk：\nJumlah bilah: 6 bilah\nKonsumsi Daya: 450W\nTegangan:220V\nWarna: Merah【Piala Tunggal】/Merah【Piala Ganda】\nKapasitas: 2500Ml/2500Ml+800Ml\nUkuran Juicer: 28cm*35cm*20cm\nBahan Badan Cangkir: Bahan food grade PCTG\nKecepatan Kosong Muatan: 50000 Rpm\nFungsi: Membuat Jus, Mengaduk, Milkshake\n\n📦Informasi pengemasan:\nMerah【Piala Tunggal】\n1 * Kabel\n1 * Mesin\n1 * Gelas berkapasitas\n1 * Panduan\n1 * Menutupi\n1 * Tutup\n1 * Campur\n\nMerah【Piala Ganda】\n1 * Kabel\n1 * Mesin\n1 * Gelas berkapasitas\n1 * Panduan\n1 * Menutupi\n1 * Tutup\n1 * Campur\n1 * Cangkir pencampur",
+    "image": "https://ik.imagekit.io/kecngoxph/blender-multifungsi.webp?updatedAt=1748169623494",
     "rating": 4.7,
     "sold": 89
   },
