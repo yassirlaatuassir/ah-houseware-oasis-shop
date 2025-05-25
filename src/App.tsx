@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { HelmetProvider } from 'react-helmet-async';
 import { AdminProvider } from './contexts/AdminContext';
 
@@ -30,35 +30,18 @@ const App = () => (
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/artikel/:articleId" element={<ArticleDetail />} />
+              <Route path="/admin" element={<Navigate to="/admin/products" replace />} />
               <Route path="/admin/login" element={<Login />} />
-              <Route path="/admin/articles" element={
+              <Route path="/admin/*" element={
                 <ProtectedRoute>
-                  <Articles />
-                </ProtectedRoute>
-              } />
-              <Route path="/admin/articles/new" element={
-                <ProtectedRoute>
-                  <ArticleEditor />
-                </ProtectedRoute>
-              } />
-              <Route path="/admin/articles/edit/:id" element={
-                <ProtectedRoute>
-                  <ArticleEditor />
-                </ProtectedRoute>
-              } />
-              <Route path="/admin/products" element={
-                <ProtectedRoute>
-                  <Products />
-                </ProtectedRoute>
-              } />
-              <Route path="/admin/products/new" element={
-                <ProtectedRoute>
-                  <ProductEditor />
-                </ProtectedRoute>
-              } />
-              <Route path="/admin/products/edit/:id" element={
-                <ProtectedRoute>
-                  <ProductEditor />
+                  <Routes>
+                    <Route path="articles" element={<Articles />} />
+                    <Route path="articles/new" element={<ArticleEditor />} />
+                    <Route path="articles/edit/:id" element={<ArticleEditor />} />
+                    <Route path="products" element={<Products />} />
+                    <Route path="products/new" element={<ProductEditor />} />
+                    <Route path="products/edit/:id" element={<ProductEditor />} />
+                  </Routes>
                 </ProtectedRoute>
               } />
               <Route path="*" element={<NotFound />} />
