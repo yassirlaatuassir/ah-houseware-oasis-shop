@@ -1,5 +1,5 @@
 // This file is auto-generated from localStorage data
-// Last updated: 2025-05-25T09:01:09.669Z
+// Last updated: 2025-05-25T09:51:40.406Z
 
 export interface Product {
   id: number;
@@ -19,7 +19,7 @@ const defaultProducts = [
     "name": "Set Panci Stainless Steel 5 Pcs",
     "price": "Rp 459.000",
     "originalPrice": "Rp 650.000",
-    "description": "Set panci premium dengan bahan stainless steel berkualitas tinggi. Terdiri dari 5 ukuran berbeda untuk berbagai kebutuhan memasak. UPDATED: Tahan panas dan mudah dibersihkan!",
+    "description": "Set panci premium dengan bahan stainless steel berkualitas tinggi. Terdiri dari 5 ukuran berbeda untuk berbagai kebutuhan memasak.",
     "image": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=400&fit=crop",
     "rating": 4.8,
     "sold": 150
@@ -75,7 +75,17 @@ const defaultProducts = [
     "sold": 34
   },
   {
-    "id": 1748163664630,
+    "id": 1748133736323,
+    "name": "Handy Stitch Mesin Jahit Portable",
+    "price": "Rp 99.000",
+    "originalPrice": "Rp 189.000",
+    "description": "Portable Cordless - Handy Stitch Mesin Jahit Portable Mini Cordless Hand Held Clothes Sewing\nMesin jahit mini portable, sangat praktis dan mudah penggunaannya.\nKeunggulan:\n1. Digunakan untuk menjahit pakaian yg robek, sangat mudah dan praktis.\n2. kecil, ringan dan mudah dibawa kemana saja.\n3. Mengunakan Batere aa 4 pcs no include\n4. Cocok untuk souvenir\n5. Dimensi 8 x 20 x 4 cm",
+    "image": "https://ik.imagekit.io/kecngoxph/portabel%20mesin%20jait.webp?updatedAt=1748069506957",
+    "rating": 0,
+    "sold": 0
+  },
+  {
+    "id": 1748160211272,
     "name": "NEW Rak Kosmetik 3 Laci Plastik Rak Kosmetik 3 susun laci",
     "price": "Rp 99.000",
     "originalPrice": "Rp 189.000",
