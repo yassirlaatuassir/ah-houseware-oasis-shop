@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
-import { FileText, Package } from 'lucide-react';
+import { FileText, Package, Save } from 'lucide-react';
 
 export default function AdminNav() {
   const location = useLocation();
@@ -25,6 +25,15 @@ export default function AdminNav() {
             >
               <Package className="w-4 h-4" />
               Products
+            </Button>
+          </Link>
+          <Link to="/admin/export">
+            <Button 
+              variant={location.pathname.includes('/admin/export') ? 'default' : 'ghost'}
+              className="flex items-center gap-2"
+            >
+              <Save className="w-4 h-4" />
+              Export Data
             </Button>
           </Link>
         </div>

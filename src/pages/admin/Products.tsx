@@ -4,19 +4,11 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { useToast } from "@/components/ui/use-toast";
-import { Eye, Pencil, Trash } from 'lucide-react';
+import { Eye, Pencil, Trash, Save } from 'lucide-react';
 import AdminNav from '@/components/admin/AdminNav';
+import { Product } from '@/data/products';
 
-interface Product {
-  id: number;
-  name: string;
-  price: string;
-  originalPrice: string;
-  description: string;
-  image: string;
-  rating: number;
-  sold: number;
-}
+// Using Product interface from products.ts
 
 export default function Products() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -63,24 +55,42 @@ export default function Products() {
   };
 
   return (
-    <div>
+    <div className="min-h-screen bg-gray-50">
       <AdminNav />
-      <div className="container mx-auto px-4">
-      <Card className="w-full">
-        <CardHeader className="flex flex-row items-center justify-between">
-          <div>
-            <CardTitle>Product Management</CardTitle>
-            <p className="text-sm text-muted-foreground mt-1">
-              Manage your product catalog here. Only admin can create, edit, and delete products.
-            </p>
+      <div className="container mx-auto py-8">
+        <div className="flex justify-between items-center mb-6">
+          <h1 className="text-3xl font-bold">Manage Products</h1>
+          <div className="flex gap-2">
+            <Button onClick={handleNewProduct}>Add New Product</Button>
+            <Button variant="outline" onClick={() => navigate('/admin/export')}>
+              <Save className="w-4 h-4 mr-2" />
+              Export Data
+            </Button>
           </div>
-          <Button onClick={handleNewProduct} className="bg-blue-600 hover:bg-blue-700">
-            Add New Product
-          </Button>
-        </CardHeader>
-        <CardContent>
-          <Table>
-            <TableHeader>
+        </div>
+        <div className="mb-6 p-4 bg-amber-50 border border-amber-200 rounded-md">
+          <h2 className="font-semibold text-amber-800 mb-2">Important Note</h2>
+          <p className="text-amber-700">
+            Changes made here are only saved to your browser's localStorage. To make these changes
+            appear in the deployed version or for other users, use the "Export Data" button to save
+            your changes to the source code and then commit them to GitHub.
+          </p>
+        </div>
+        <Card className="w-full">
+          <CardHeader className="flex flex-row items-center justify-between">
+            <div>
+              <CardTitle>Product Management</CardTitle>
+              <p className="text-sm text-muted-foreground mt-1">
+                Manage your product catalog here. Only admin can create, edit, and delete products.
+              </p>
+            </div>
+            <Button onClick={handleNewProduct} className="bg-blue-600 hover:bg-blue-700">
+              Add New Product
+            </Button>
+          </CardHeader>
+          <CardContent>
+            <Table>
+              <TableHeader>
               <TableRow>
                 <TableHead>Image</TableHead>
                 <TableHead>Name</TableHead>

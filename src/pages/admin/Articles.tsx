@@ -4,19 +4,11 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { useToast } from "@/components/ui/use-toast";
-import { Eye, Pencil, Trash } from 'lucide-react';
+import { Eye, Pencil, Trash, Save } from 'lucide-react';
 import AdminNav from '@/components/admin/AdminNav';
+import { Article } from '@/data/articles';
 
-interface Article {
-  id: number;
-  title: string;
-  content: string;
-  excerpt: string;
-  image: string;
-  date: string;
-  author: string;
-  slug?: string;
-}
+// Using Article interface from articles.ts
 
 export default function Articles() {
   const [articles, setArticles] = useState<Article[]>([]);
@@ -65,24 +57,42 @@ export default function Articles() {
   };
 
   return (
-    <div>
+    <div className="min-h-screen bg-gray-50">
       <AdminNav />
-      <div className="container mx-auto px-4">
-      <Card className="w-full">
-        <CardHeader className="flex flex-row items-center justify-between">
-          <div>
-            <CardTitle>Article Management</CardTitle>
-            <p className="text-sm text-muted-foreground mt-1">
-              Manage your articles here. Only admin can create, edit, and delete articles.
-            </p>
+      <div className="container mx-auto py-8">
+        <div className="flex justify-between items-center mb-6">
+          <h1 className="text-3xl font-bold">Manage Articles</h1>
+          <div className="flex gap-2">
+            <Button onClick={handleNewArticle}>Add New Article</Button>
+            <Button variant="outline" onClick={() => navigate('/admin/export')}>
+              <Save className="w-4 h-4 mr-2" />
+              Export Data
+            </Button>
           </div>
-          <Button onClick={handleNewArticle} className="bg-blue-600 hover:bg-blue-700">
-            Create New Article
-          </Button>
-        </CardHeader>
-        <CardContent>
-          <Table>
-            <TableHeader>
+        </div>
+        <div className="mb-6 p-4 bg-amber-50 border border-amber-200 rounded-md">
+          <h2 className="font-semibold text-amber-800 mb-2">Important Note</h2>
+          <p className="text-amber-700">
+            Changes made here are only saved to your browser's localStorage. To make these changes
+            appear in the deployed version or for other users, use the "Export Data" button to save
+            your changes to the source code and then commit them to GitHub.
+          </p>
+        </div>
+        <Card className="w-full">
+          <CardHeader className="flex flex-row items-center justify-between">
+            <div>
+              <CardTitle>Article Management</CardTitle>
+              <p className="text-sm text-muted-foreground mt-1">
+                Manage your articles here. Only admin can create, edit, and delete articles.
+              </p>
+            </div>
+            <Button onClick={handleNewArticle} className="bg-blue-600 hover:bg-blue-700">
+              Create New Article
+            </Button>
+          </CardHeader>
+          <CardContent>
+            <Table>
+              <TableHeader>
               <TableRow>
                 <TableHead>Title</TableHead>
                 <TableHead>Author</TableHead>

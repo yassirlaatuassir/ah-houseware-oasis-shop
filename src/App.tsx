@@ -16,6 +16,7 @@ import Articles from "./pages/admin/Articles";
 import ArticleEditor from "./pages/admin/ArticleEditor";
 import Products from "./pages/admin/Products";
 import ProductEditor from "./pages/admin/ProductEditor";
+import DataExport from "./pages/admin/DataExport";
 
 const queryClient = new QueryClient();
 
@@ -41,6 +42,7 @@ const App = () => (
                     <Route path="products" element={<Products />} />
                     <Route path="products/new" element={<ProductEditor />} />
                     <Route path="products/edit/:id" element={<ProductEditor />} />
+                    <Route path="export" element={<DataExport />} />
                   </Routes>
                 </ProtectedRoute>
               } />
