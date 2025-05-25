@@ -1,5 +1,5 @@
 // This file is auto-generated from localStorage data
-// Last updated: 2025-05-25T09:51:40.406Z
+// Last updated: 2025-05-25T10:26:05.599Z
 
 export interface Product {
   id: number;
@@ -16,11 +16,11 @@ export interface Product {
 const defaultProducts = [
   {
     "id": 1,
-    "name": "Set Panci Stainless Steel 5 Pcs",
-    "price": "Rp 459.000",
-    "originalPrice": "Rp 650.000",
-    "description": "Set panci premium dengan bahan stainless steel berkualitas tinggi. Terdiri dari 5 ukuran berbeda untuk berbagai kebutuhan memasak.",
-    "image": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=400&fit=crop",
+    "name": "PANCI STAINLESS STEEL 3 Set Panci dan Wajan Stainless Steel / Panci Sup 20cm Panci Mie 16cm Wajan 24cm",
+    "price": "Rp 129.000",
+    "originalPrice": "Rp 250.000",
+    "description": "Panci dan Wajan Stainless Steel / Panci Sup 20cm, Panci Mie 16cm, Wajan 24cm\n\n\nspecialized in stainless steel industry for more than 20 years. \n\nKami selalu berkomitmen untuk menyediakan produk berkualitas tinggi untuk memenuhi kebutuhan konsumen. Semua produk kami memiliki kualitas import dan diproduksi secara profesional.\n\nREADY STOCK! PESANAN AKAN DI PROSES 24 JAM SETELAH PEMBAYARAN ! \n\n\nSet isi 3pcs:\n\n1x Panci Sup 20cm, 1x Panci mie 16cm, 1x Wajan 24cm\n\n\nPanci ini terbuat dari stainless steel, bisa buat rebus, kukus, maupun goreng.\n\nterbuat dari stainless steel tahan karat.\n\nDilengkapi oleh tutup kaca yang tahan panas dan pegangan penutup yang panjang untuk kenyamanan pengguna.\n\nDilengkapi dengan saringan buat mie maupun makanan lainnya. \n\nDeep fryer dengan kapasitas sedang yang bisa digunakan untuk usaha atau pun rumah tangga yang hobi makan gorengan kering.\n\nGagang panci membuatnya mudah diangkat",
+    "image": "https://ik.imagekit.io/kecngoxph/panci%20set%203.webp?updatedAt=1748168743141",
     "rating": 4.8,
     "sold": 150
   },
