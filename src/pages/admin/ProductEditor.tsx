@@ -72,38 +72,50 @@ export default function ProductEditor() {
       const savedProducts = localStorage.getItem('ah_products');
       let products = savedProducts ? JSON.parse(savedProducts) : [];
 
-    if (isEditMode) {
-      // Update existing product
-      products = products.map((p: Product) => 
-        p.id.toString() === id ? formattedProduct : p
-      );
-      toast({
-        title: "Product Updated",
-        description: "The product has been successfully updated.",
-      });
-    } else {
-      // Add new product
-      const newProduct = {
-        ...formattedProduct,
-        id: Date.now(),
-        rating: 0,
-        sold: 0
-      };
-      products.push(newProduct);
-      toast({
-        title: "Product Created",
-        description: "The new product has been successfully created.",
-      });
-    }
+      if (isEditMode) {
+        // Update existing product
+        const productIndex = products.findIndex((p: Product) => p.id.toString() === id);
+        
+        if (productIndex !== -1) {
+          // Make sure to keep the same ID when updating
+          const updatedProduct = {
+            ...formattedProduct,
+            id: parseInt(id as string) // Ensure ID remains the same
+          };
+          
+          products[productIndex] = updatedProduct;
+          
+          toast({
+            title: "Product Updated",
+            description: "The product has been successfully updated.",
+          });
+        } else {
+          toast({
+            title: "Error",
+            description: "Product not found. Unable to update.",
+            variant: "destructive",
+          });
+          return;
+        }
+      } else {
+        // Add new product
+        const newProduct = {
+          ...formattedProduct,
+          id: Date.now(),
+          rating: 0,
+          sold: 0
+        };
+        products.push(newProduct);
+        toast({
+          title: "Product Created",
+          description: "The new product has been successfully created.",
+        });
+      }
 
       // Save back to localStorage
       localStorage.setItem('ah_products', JSON.stringify(products));
-      
-      toast({
-        title: isEditMode ? "Product Updated" : "Product Created",
-        description: isEditMode ? "The product has been successfully updated." : "The new product has been successfully created.",
-      });
 
+      // Navigate back to products list after successful operation
       navigate('/admin/products');
     } catch (error) {
       console.error('Error saving product:', error);

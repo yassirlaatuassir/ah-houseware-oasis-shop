@@ -4,10 +4,15 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useToast } from "@/components/ui/use-toast";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { AlertCircle, Github, ExternalLink } from "lucide-react";
 
 export default function DataExporter() {
   const [productsCode, setProductsCode] = useState<string>('');
   const [articlesCode, setArticlesCode] = useState<string>('');
+  const [activeTab, setActiveTab] = useState<string>('products');
+  const [showDeployGuide, setShowDeployGuide] = useState<boolean>(false);
   const { toast } = useToast();
 
   // Function to export products from localStorage
@@ -143,9 +148,70 @@ export const articles = ${JSON.stringify(articles, null, 2)};`;
           <div className="flex gap-4 mb-6">
             <Button onClick={exportProducts}>Export Products</Button>
             <Button onClick={exportArticles}>Export Articles</Button>
+            <Button 
+              variant="outline" 
+              onClick={() => setShowDeployGuide(!showDeployGuide)}
+              className="ml-auto"
+            >
+              {showDeployGuide ? 'Hide Deploy Guide' : 'Show Deploy Guide'}
+            </Button>
           </div>
+
+          {showDeployGuide && (
+            <Alert className="mb-6 bg-blue-50 border-blue-200">
+              <AlertCircle className="h-4 w-4 text-blue-600" />
+              <AlertTitle className="text-blue-800">GitHub-Vercel Integration</AlertTitle>
+              <AlertDescription className="text-blue-700">
+                <p className="mb-2">After exporting and updating your code files, follow these steps to deploy your changes:</p>
+                <Accordion type="single" collapsible className="w-full">
+                  <AccordionItem value="step1">
+                    <AccordionTrigger className="text-blue-700 font-medium">1. Update source files</AccordionTrigger>
+                    <AccordionContent className="text-blue-600">
+                      <p>Copy the exported code and update these files in your project:</p>
+                      <ul className="list-disc pl-5 mt-2 space-y-1">
+                        <li><code>src/data/products.ts</code> - for product data</li>
+                        <li><code>src/data/articles.ts</code> - for article data</li>
+                      </ul>
+                    </AccordionContent>
+                  </AccordionItem>
+                  <AccordionItem value="step2">
+                    <AccordionTrigger className="text-blue-700 font-medium">2. Commit and push to GitHub</AccordionTrigger>
+                    <AccordionContent className="text-blue-600">
+                      <p>Open a terminal in your project directory and run:</p>
+                      <pre className="bg-blue-100 p-2 rounded mt-2 overflow-x-auto">
+                        <code>git add src/data/products.ts src/data/articles.ts</code>
+                      </pre>
+                      <pre className="bg-blue-100 p-2 rounded mt-2 overflow-x-auto">
+                        <code>git commit -m "Update products and articles"</code>
+                      </pre>
+                      <pre className="bg-blue-100 p-2 rounded mt-2 overflow-x-auto">
+                        <code>git push</code>
+                      </pre>
+                    </AccordionContent>
+                  </AccordionItem>
+                  <AccordionItem value="step3">
+                    <AccordionTrigger className="text-blue-700 font-medium">3. Vercel automatic deployment</AccordionTrigger>
+                    <AccordionContent className="text-blue-600">
+                      <p>Vercel will automatically detect your push and deploy the changes.</p>
+                      <p className="mt-2">Check your Vercel dashboard to monitor the deployment status.</p>
+                      <div className="mt-3">
+                        <a 
+                          href="/docs/github-vercel-integration.md" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center text-blue-800 hover:text-blue-900 font-medium"
+                        >
+                          View detailed integration guide <ExternalLink className="ml-1 h-4 w-4" />
+                        </a>
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion>
+              </AlertDescription>
+            </Alert>
+          )}
           
-          <Tabs defaultValue="products">
+          <Tabs defaultValue="products" onValueChange={setActiveTab}>
             <TabsList>
               <TabsTrigger value="products">Products</TabsTrigger>
               <TabsTrigger value="articles">Articles</TabsTrigger>
@@ -154,7 +220,10 @@ export const articles = ${JSON.stringify(articles, null, 2)};`;
             <TabsContent value="products">
               {productsCode && (
                 <>
-                  <div className="flex justify-end mb-2">
+                  <div className="flex justify-between mb-2">
+                    <p className="text-sm text-muted-foreground pt-2">
+                      This code should be saved to <code>src/data/products.ts</code>
+                    </p>
                     <Button variant="outline" size="sm" onClick={() => copyToClipboard(productsCode)}>
                       Copy to Clipboard
                     </Button>
@@ -162,11 +231,20 @@ export const articles = ${JSON.stringify(articles, null, 2)};`;
                   <Textarea 
                     value={productsCode} 
                     readOnly 
-                    className="font-mono text-sm h-[500px]" 
+                    className="font-mono text-sm h-[400px]" 
                   />
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    Copy this code and save it to <code>src/data/products.ts</code>
-                  </p>
+                  {activeTab === 'products' && productsCode && (
+                    <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-md">
+                      <h3 className="font-semibold text-green-800 flex items-center">
+                        <Github className="mr-2 h-4 w-4" /> Next Steps
+                      </h3>
+                      <p className="text-green-700 mt-1">
+                        1. Copy this code to <code>src/data/products.ts</code><br />
+                        2. Commit and push to GitHub<br />
+                        3. Vercel will automatically deploy your changes
+                      </p>
+                    </div>
+                  )}
                 </>
               )}
             </TabsContent>
@@ -174,7 +252,10 @@ export const articles = ${JSON.stringify(articles, null, 2)};`;
             <TabsContent value="articles">
               {articlesCode && (
                 <>
-                  <div className="flex justify-end mb-2">
+                  <div className="flex justify-between mb-2">
+                    <p className="text-sm text-muted-foreground pt-2">
+                      This code should be saved to <code>src/data/articles.ts</code>
+                    </p>
                     <Button variant="outline" size="sm" onClick={() => copyToClipboard(articlesCode)}>
                       Copy to Clipboard
                     </Button>
@@ -182,11 +263,20 @@ export const articles = ${JSON.stringify(articles, null, 2)};`;
                   <Textarea 
                     value={articlesCode} 
                     readOnly 
-                    className="font-mono text-sm h-[500px]" 
+                    className="font-mono text-sm h-[400px]" 
                   />
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    Copy this code and save it to <code>src/data/articles.ts</code>
-                  </p>
+                  {activeTab === 'articles' && articlesCode && (
+                    <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-md">
+                      <h3 className="font-semibold text-green-800 flex items-center">
+                        <Github className="mr-2 h-4 w-4" /> Next Steps
+                      </h3>
+                      <p className="text-green-700 mt-1">
+                        1. Copy this code to <code>src/data/articles.ts</code><br />
+                        2. Commit and push to GitHub<br />
+                        3. Vercel will automatically deploy your changes
+                      </p>
+                    </div>
+                  )}
                 </>
               )}
             </TabsContent>

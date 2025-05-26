@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "sonner";
+import { useAdmin } from "@/contexts/AdminContext";
 
 // Simple hash function for demo purposes
 const hashPassword = async (password: string) => {
@@ -44,6 +45,8 @@ export default function Login() {
     }
   }, []);
 
+  const { login } = useAdmin();
+
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -59,56 +62,33 @@ export default function Login() {
       // Simulate network delay
       await new Promise(resolve => setTimeout(resolve, 1000));
 
-      const hashedPassword = await hashPassword(password);
-      const correctHash = await hashPassword('ahhouseware2025');
+      const loginSuccess = login(username, password);
 
-      if (username === 'admin' && hashedPassword === correctHash) {
-      localStorage.setItem('isAdmin', 'true');
-      
-      // Initialize default articles and products if they don't exist
-      const savedArticles = localStorage.getItem('ah_articles');
-      const savedProducts = localStorage.getItem('ah_products');
-      
-      if (!savedArticles) {
-        import('@/data/articles').then(({ articles: defaultArticles }) => {
-          localStorage.setItem('ah_articles', JSON.stringify(defaultArticles));
-        });
-      }
-      
-      if (!savedProducts) {
-        const defaultProducts = [
-          {
-            id: 1,
-            name: 'Set Panci Stainless Steel 5 Pcs',
-            price: 'Rp 459.000',
-            originalPrice: 'Rp 650.000',
-            description: 'Set panci premium dengan bahan stainless steel berkualitas tinggi. Terdiri dari 5 ukuran berbeda untuk berbagai kebutuhan memasak.',
-            image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=400&fit=crop',
-            rating: 4.8,
-            sold: 150
-          },
-          {
-            id: 2,
-            name: 'Blender Multifungsi 2L',
-            price: 'Rp 325.000',
-            originalPrice: 'Rp 450.000',
-            description: 'Blender serbaguna dengan kapasitas 2L, cocok untuk smoothie, jus, dan menghaluskan bumbu. Dilengkapi dengan 3 kecepatan.',
-            image: 'https://images.unsplash.com/photo-1570197788417-0e82375c9371?w=400&h=400&fit=crop',
-            rating: 4.7,
-            sold: 89
-          }
-        ];
-        localStorage.setItem('ah_products', JSON.stringify(defaultProducts));
-      }
-      
+      if (loginSuccess) {
+        // Initialize default articles and products if they don't exist
+        const savedArticles = localStorage.getItem('ah_articles');
+        const savedProducts = localStorage.getItem('ah_products');
+        
+        if (!savedArticles) {
+          import('@/data/articles').then(({ articles: defaultArticles }) => {
+            localStorage.setItem('ah_articles', JSON.stringify(defaultArticles));
+          });
+        }
+        
+        if (!savedProducts) {
+          import('@/data/products').then((module) => {
+            const defaultProducts = module.default;
+            localStorage.setItem('ah_products', JSON.stringify(defaultProducts));
+          });
+        }
+        
         // Reset login attempts on successful login
         localStorage.removeItem('loginAttempts');
         localStorage.removeItem('loginLockoutUntil');
         setLoginAttempts(0);
         setIsLocked(false);
         
-        localStorage.setItem('isAdmin', 'true');
-        navigate('/admin/articles');
+        navigate('/admin/products');
         toast.success('Login berhasil!');
       } else {
         const newAttempts = loginAttempts + 1;
