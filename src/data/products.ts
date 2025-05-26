@@ -1,5 +1,6 @@
 // This file is auto-generated from localStorage data
-// Last updated: 2025-05-26T20:36:37+07:00
+// Last updated: 2025-05-26T20:40:55+07:00
+// Updated to fix line ending issues
 
 export interface Product {
   id: number;
