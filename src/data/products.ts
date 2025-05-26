@@ -1,5 +1,5 @@
 // This file is auto-generated from localStorage data
-// Last updated: 2025-05-26T06:30:29.639Z
+// Last updated: 2025-05-26T20:36:37+07:00
 
 export interface Product {
   id: number;
@@ -91,6 +91,16 @@ const defaultProducts = [
     "originalPrice": "Rp 189.000",
     "description": "Tingkatkan permainan barbekyu Anda dengan (COD) Grill Plate Smokeless Idola 32CM Anti Lengket. Dibuat dari Enamel tahan karat berkualitas tinggi, pelat panggangan ini dirancang untuk meningkatkan pengalaman memanggang Anda.\n\nTeknologi Tanpa Asap: Ucapkan selamat tinggal pada asap berlebihan saat memanggang, berkat desain tanpa asap ini.\n\nTahan Karat: Konstruksi Enamel tahan karat memastikan ketahanan karat, memberikan daya tahan untuk penggunaan jangka panjang.\n\nPiring panggangan ini memiliki diameter 32cm dan dikemas dalam satu kemasan, sehingga nyaman untuk semua kebutuhan barbekyu Anda. Nikmati pengalaman memanggang tanpa repot dengan fitur anti-lengket (anti lengket) yang memudahkan pembersihan setiap selesai digunakan.",
     "image": "https://ik.imagekit.io/kecngoxph/grill-plate.webp?updatedAt=1748239902921",
+    "rating": 0,
+    "sold": 0
+  },
+  {
+    "id": 1748266288512,
+    "name": "PISAU DORI JEPANG SUPER TAJAM PISAU GANTUNGAN KUNCI PISAU DAPUR DAGING",
+    "price": "Rp 119.000",
+    "originalPrice": "Rp 250.000",
+    "description": "Pisau memiliki beberapa fitur yang luar biasa. Pertama-tama, pisau ini memiliki pisau yang sangat tajam yang dapat digunakan untuk memotong berbagai bahan dengan mudah. Selain itu, pisau ini dilengkapi dengan sarung kulit eksklusif yang dapat digunakan untuk menyimpan pisau dengan aman. Pisau ini sangat cocok untuk digunakan di dalam maupun di luar ruangan. \n\nukuran：\nKetebalan punggung : 2.0mm\nPanjang pegangan: 8cm\nBahan Pegangan: ABS\nPanjang bilah: 9cm\nLebar pisau: 2.4cm\nPanjang: 17cm\n",
+    "image": "https://ik.imagekit.io/kecngoxph/pisau-dori.webp?updatedAt=1748266248908",
     "rating": 0,
     "sold": 0
   }
