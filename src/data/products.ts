@@ -1,5 +1,5 @@
 // This file is auto-generated from localStorage data
-// Last updated: 2025-08-31T15:27:33.642Z
+// Last updated: 2025-08-31T16:01:47.376Z
 
 export interface Product {
   id: number;
@@ -40,7 +40,7 @@ const defaultProducts = [
     "price": "Rp 285.000",
     "originalPrice": "Rp 380.000",
     "description": "Rice cooker digital dengan teknologi fuzzy logic. Menjaga nasi tetap hangat dan pulen hingga 24 jam.",
-    "image": "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&h=400&fit=crop",
+    "image": "https://ik.imagekit.io/kecngoxph/rice-cooker.jpg?updatedAt=1756655813541",
     "rating": 4.9,
     "sold": 203
   },
