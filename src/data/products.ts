@@ -1,6 +1,5 @@
 // This file is auto-generated from localStorage data
-// Last updated: 2025-05-26T20:40:55+07:00
-// Updated to fix line ending issues
+// Last updated: 2025-08-31T15:27:33.642Z
 
 export interface Product {
   id: number;
@@ -31,7 +30,7 @@ const defaultProducts = [
     "price": "Rp 325.000",
     "originalPrice": "Rp 450.000",
     "description": "Blender serbaguna dengan kapasitas 2L, cocok untuk smoothie, jus, dan menghaluskan bumbu. Dilengkapi dengan 3 kecepatan.",
-    "image": "https://images.unsplash.com/photo-1570197788417-0e82375c9371?w=400&h=400&fit=crop",
+    "image": "https://ik.imagekit.io/kecngoxph/panci%20set%203.webp?updatedAt=1748168743141",
     "rating": 4.7,
     "sold": 89
   },
