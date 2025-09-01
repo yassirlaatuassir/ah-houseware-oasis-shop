@@ -1,5 +1,5 @@
 // This file is auto-generated from localStorage data
-// Last updated: 2025-09-01T02:28:40.788Z
+// Last updated: 2025-09-01T02:54:54.978Z
 
 export interface Product {
   id: number;
@@ -20,7 +20,7 @@ const defaultProducts = [
     "price": "Rp 459.000",
     "originalPrice": "Rp 650.000",
     "description": "Set panci premium dengan bahan stainless steel berkualitas tinggi. Terdiri dari 5 ukuran berbeda untuk berbagai kebutuhan memasak.",
-    "image": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=400&fit=crop",
+    "image": "https://ik.imagekit.io/kecngoxph/download.jpg?updatedAt=1756694276175",
     "rating": 4.8,
     "sold": 150
   },
@@ -56,11 +56,11 @@ const defaultProducts = [
   },
   {
     "id": 5,
-    "name": "Wajan Anti Lengket 28cm",
+    "name": "Wajan Anti Lengket 32cm",
     "price": "Rp 145.000",
     "originalPrice": "Rp 200.000",
     "description": "Wajan anti lengket dengan lapisan ceramic coating. Aman untuk kesehatan dan mudah dibersihkan.",
-    "image": "https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=400&h=400&fit=crop",
+    "image": "https://ik.imagekit.io/kecngoxph/wajan-anti-lengket.jpg?updatedAt=1756694631004",
     "rating": 4.5,
     "sold": 112
   },
@@ -70,7 +70,7 @@ const defaultProducts = [
     "price": "Rp 1.250.000",
     "originalPrice": "Rp 1.500.000",
     "description": "Mixer stand profesional dengan mangkuk stainless steel 5L. Ideal untuk membuat roti, kue, dan berbagai adonan.",
-    "image": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=400&fit=crop",
+    "image": "https://ik.imagekit.io/kecngoxph/mixer%20stand%205%20L.jpg?updatedAt=1756695124208",
     "rating": 4.9,
     "sold": 34
   },
